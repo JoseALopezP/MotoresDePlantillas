@@ -1,0 +1,1 @@
+Aunque tiene una curva de aprendizaje mayor, o al menos requiere una abstracción mayor que para escribir en EJS, eligiría pug por la velocidad y una mayor sencillez en la escritura. También está listado como una tecnología más utilizada, tiene una mayor comunidad y más información que sirve a la hora de corregir errores (personalmente lo necesité)
