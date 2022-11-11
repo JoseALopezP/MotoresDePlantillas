@@ -1,0 +1,25 @@
+
+html
+  head
+    title="LIST"
+  body
+    a(
+      href='/'
+    )='<- Ir a formulario'
+    h2='Vista de Productos'
+    if productos.length == 0
+      h3='No hay datos.'
+    else 
+      table
+        tr 
+          th='Title'
+          th='Price'
+          th='Product'
+        each product in products
+          tr 
+            td=product.title
+            td=product.price
+            td
+              img(
+                src=product.thumbnail
+              )

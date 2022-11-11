@@ -1,13 +1,12 @@
 const express = require('express');
-const { Router } = express;
 const aplication = express();
 
-//Defining Routes
-const routeProducts = Router();
 
 //json
 aplication.use(express.json());
 aplication.use(express.urlencoded({ extended: true}));
+
+aplication.set('view engine', 'ejs');
 
 //Public
 aplication.use(express.static(__dirname + '/public'));
@@ -71,40 +70,22 @@ const products = new Container([]);
 
 
 //Endpoints
-routeProducts.get('/:id', async (request, response) => {
-    const id = parseInt(request.params.id);
-    const product = products.getById(id);
-    if (product) {
-      response.json(product);
-    } else {
-      response.status(404);
-      response.json({ error : 'Product not found' });
-    }
-});
-
-routeProducts.get('/', (request, response) => {
-    const productList = products.getAll();
-    response.json(productList);
+aplication.get('/products', (request, response) => {
+    const productsList = products.getAll();
+    response.render('list', {
+      products: productsList
+    });
 });
   
-routeProducts.post('/', (request, response) => {
+aplication.post('/products', (request, response) => {
     const product = request.body;
     products.save(product);
-    response.send('ok');
+    response.render('forms', {});
 });
   
-routeProducts.put('/:id', (request, respuesta) => {
-    const id = parseInt(request.params.id);
+aplication.get('/', (request, response) => {
+    response.render('forms', {});
 });
-  
-routeProducts.delete('/:id', (request, respuesta) => {
-    const id = parseInt(request.params.id);
-    products.delete(id);
-    response.send('Producto Eliminado');
-});
-
-aplication.use('/products', routeProducts);
-aplication.use('/api/products', routeProducts);
 
 
 

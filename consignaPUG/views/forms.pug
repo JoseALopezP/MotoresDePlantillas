@@ -1,0 +1,46 @@
+html
+  head
+    title="FORM"
+  body
+    a(
+      href='/products'
+    )='Ir a la lista ->'
+    h2='Ingrese producto: '
+    form(
+      action="/products" 
+      method="post"
+    )
+      label(
+        for="title"
+      )='Titulo:'
+      input(
+        id="title"
+        type="text"
+        name="title"
+      )
+      br
+      br
+      label(
+        for="price"
+      )='Precio:'
+      input(
+        id="price"
+        type="text"
+        name="price"
+      )
+      br
+      br
+      label(
+        for="thumbnail"
+      )='Thumbnail'
+      input(
+        id="thumbnail"
+        type="text"
+        name="thumbnail"
+      )
+      br
+      br
+      input(
+        type="submit"
+        value="Send"
+      )
